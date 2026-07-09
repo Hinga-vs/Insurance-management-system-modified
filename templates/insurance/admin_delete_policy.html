@@ -1,0 +1,274 @@
+{% extends 'insurance/adminbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        body{
+            background:#f4f7fc;
+            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+        }
+
+        a{
+            text-decoration:none !important;
+        }
+
+        .page-header{
+            background:linear-gradient(135deg,#0f4c81,#1e88e5);
+            color:#fff;
+            padding:35px;
+            border-radius:20px;
+            margin:35px auto;
+            box-shadow:0 15px 40px rgba(0,0,0,.12);
+        }
+
+        .page-header h2{
+            margin:0;
+            font-weight:700;
+        }
+
+        .page-header p{
+            margin-top:10px;
+            opacity:.9;
+            font-size:15px;
+        }
+
+        .table-card{
+            background:#fff;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 40px rgba(0,0,0,.08);
+        }
+
+        .table-header{
+            background:#0f4c81;
+            color:#fff;
+            padding:20px 30px;
+        }
+
+        .table-header h4{
+            margin:0;
+            font-weight:600;
+        }
+
+        table{
+            margin-bottom:0 !important;
+        }
+
+        thead{
+            background:#eef4ff;
+        }
+
+        thead th{
+            color:#0f4c81;
+            font-weight:700;
+            padding:18px !important;
+            border:none !important;
+            white-space:nowrap;
+        }
+
+        tbody td{
+            padding:18px !important;
+            vertical-align:middle !important;
+        }
+
+        tbody tr{
+            transition:.3s;
+        }
+
+        tbody tr:hover{
+            background:#f8fbff;
+        }
+
+        .serial{
+            color:#0f4c81;
+            font-weight:700;
+        }
+
+        .policy-name{
+            font-weight:600;
+            color:#0f4c81;
+        }
+
+        .badge-category{
+            background:#e8f1ff;
+            color:#0f4c81;
+            padding:6px 14px;
+            border-radius:30px;
+            font-size:12px;
+            font-weight:600;
+        }
+
+        .money{
+            color:#198754;
+            font-weight:600;
+        }
+
+        .tenure{
+            color:#6c757d;
+            font-weight:600;
+        }
+
+        .btn-delete{
+            width:42px;
+            height:42px;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:#dc3545;
+            color:#fff !important;
+            transition:.3s;
+            margin:auto;
+        }
+
+        .btn-delete:hover{
+            background:#bb2d3b;
+            transform:scale(1.08);
+            box-shadow:0 8px 20px rgba(220,53,69,.35);
+        }
+
+        .empty{
+            text-align:center;
+            padding:60px;
+            color:#777;
+        }
+
+        @media(max-width:992px){
+
+            .table-card{
+                overflow-x:auto;
+            }
+
+            table{
+                min-width:1100px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<div class="container">
+
+    <div class="page-header">
+
+        <h2>
+            <i class="fas fa-file-contract"></i>
+            Delete Insurance Policies
+        </h2>
+
+        <p>
+            Manage and permanently remove insurance policies from the system.
+        </p>
+
+    </div>
+
+    <div class="table-card">
+
+        <div class="table-header">
+
+            <h4>
+                Policy Directory
+            </h4>
+
+        </div>
+
+        <table class="table table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+                    <th>Policy Name</th>
+                    <th>Category</th>
+                    <th>Sum Assurance</th>
+                    <th>Premium</th>
+                    <th>Tenure</th>
+                    <th>Created On</th>
+                    <th style="text-align:center;">Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for t in policies %}
+
+                <tr>
+
+                    <td class="serial">{{ forloop.counter }}</td>
+
+                    <td class="policy-name">{{ t.policy_name }}</td>
+
+                    <td>
+                        <span class="badge-category">
+                            {{ t.category }}
+                        </span>
+                    </td>
+
+                    <td class="money">
+                        {{ t.sum_assurance }}
+                    </td>
+
+                    <td class="money">
+                        {{ t.premium }}
+                    </td>
+
+                    <td class="tenure">
+                        {{ t.tenure }}
+                    </td>
+
+                    <td>
+                        {{ t.creation_date }}
+                    </td>
+
+                    <td style="text-align:center;">
+
+                        <a href="{% url 'delete-policy' t.id %}" class="btn-delete">
+
+                            <i class="fas fa-trash"></i>
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="8" class="empty">
+
+                        <i class="fas fa-folder-open fa-3x"></i>
+
+                        <br><br>
+
+                        No insurance policies found.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<br><br><br>
+
+{% endblock content %}

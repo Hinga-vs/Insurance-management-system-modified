@@ -1,0 +1,385 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+
+body{
+    background:#f4f7fc;
+    font-family:'Segoe UI',sans-serif;
+}
+
+a{
+    text-decoration:none!important;
+}
+
+.hero-section{
+
+    background:linear-gradient(135deg,#4C51BF,#667EEA);
+    color:#fff;
+    border-radius:20px;
+    padding:45px;
+    margin:40px 0 30px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+}
+
+.hero-section h2{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.hero-section p{
+    margin:0;
+    opacity:.95;
+}
+
+.customer-card{
+
+    background:#fff;
+    border-radius:20px;
+    overflow:hidden;
+    border:none;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.customer-header{
+
+    background:#fff;
+    padding:25px 30px;
+    border-bottom:1px solid #ececec;
+
+}
+
+.customer-header h4{
+
+    margin:0;
+    color:#2d3748;
+    font-weight:700;
+
+}
+
+.table{
+
+    margin-bottom:0;
+
+}
+
+.table thead{
+
+    background:#eef2ff;
+
+}
+
+.table thead th{
+
+    border:none;
+    text-align:center;
+    color:#374151;
+    font-weight:700;
+    padding:18px;
+
+}
+
+.table tbody td{
+
+    text-align:center;
+    vertical-align:middle;
+    padding:18px;
+    border-top:1px solid #f2f2f2;
+
+}
+
+.table tbody tr{
+
+    transition:.3s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#f8f9ff;
+
+}
+
+.customer-img{
+
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #667EEA;
+
+}
+
+.customer-name{
+
+    font-weight:700;
+    color:#2d3748;
+
+}
+
+.mobile{
+
+    color:#4C51BF;
+    font-weight:600;
+
+}
+
+.address{
+
+    color:#6c757d;
+    max-width:250px;
+}
+
+.btn-edit{
+
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#4C51BF;
+    color:#fff;
+    border:none;
+    transition:.3s;
+
+}
+
+.btn-edit:hover{
+
+    background:#3949ab;
+    color:#fff;
+    transform:translateY(-3px);
+
+}
+
+.btn-delete{
+
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    background:#dc3545;
+    color:#fff;
+    border:none;
+    transition:.3s;
+
+}
+
+.btn-delete:hover{
+
+    background:#bb2d3b;
+    color:#fff;
+    transform:translateY(-3px);
+
+}
+
+.footer-box{
+
+    margin-top:25px;
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+    color:#6c757d;
+
+}
+
+@media(max-width:768px){
+
+.hero-section{
+
+text-align:center;
+padding:30px 20px;
+
+}
+
+.hero-section h2{
+
+font-size:28px;
+
+}
+
+.table{
+
+font-size:14px;
+
+}
+
+.customer-img{
+
+width:50px;
+height:50px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<div class="container mb-5">
+
+    <div class="hero-section">
+
+        <h2>
+
+            <i class="fas fa-users mr-2"></i>
+
+            Customer Management
+
+        </h2>
+
+        <p>
+
+            Manage your valued customers efficiently. Keep customer records updated to provide
+            excellent insurance services and build long-term trust.
+
+        </p>
+
+    </div>
+
+    <div class="customer-card">
+
+        <div class="customer-header">
+
+            <h4>
+
+                <i class="fas fa-address-book mr-2"></i>
+
+                Registered Customers
+
+            </h4>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Profile</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for t in customers %}
+
+                    <tr>
+
+                        <td>
+
+                            <span class="customer-name">
+
+                                {{t.get_name}}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <img src="{% static t.profile_pic.url %}"
+                                 class="customer-img"
+                                 alt="Profile Picture">
+
+                        </td>
+
+                        <td>
+
+                            <span class="mobile">
+
+                                {{t.mobile}}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="address">
+
+                                {{t.address}}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="{% url 'update-customer' t.id %}"
+
+                               class="btn btn-edit"
+
+                               title="Update Customer">
+
+                                <i class="fas fa-edit"></i>
+
+                            </a>
+
+                        </td>
+
+                        <td>
+
+                            <a href="{% url 'delete-customer' t.id %}"
+
+                               class="btn btn-delete"
+
+                               title="Delete Customer">
+
+                                <i class="fas fa-trash"></i>
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div class="footer-box">
+
+        <i class="fas fa-handshake text-primary mr-2"></i>
+
+        Strong customer relationships are the foundation of every successful insurance business.
+        Keep customer information accurate to deliver better service and build lasting trust.
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+
+{% endblock content %}

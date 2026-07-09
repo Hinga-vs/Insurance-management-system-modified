@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Insurance Management System</title>
+
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+<style>
+
+
+*{
+    font-family:'Poppins',sans-serif;
+}
+
+
+
+body{
+
+    padding-top:80px;
+
+}
+
+
+
+/* NAVBAR */
+
+.navbar{
+
+    background:rgba(8,25,47,0.96);
+
+    padding:15px 45px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+/* BRAND */
+
+
+.navbar-brand{
+
+    font-size:25px;
+
+    font-weight:700;
+
+    color:white!important;
+
+    letter-spacing:.5px;
+
+}
+
+
+
+.navbar-brand i{
+
+    color:#4da3ff;
+
+    margin-right:8px;
+
+}
+
+
+
+.navbar-brand span{
+
+    color:#4da3ff;
+
+}
+
+
+
+
+
+/* LINKS */
+
+
+.navbar-nav .nav-link{
+
+    color:#ffffff!important;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    margin-left:12px;
+
+    padding:9px 18px!important;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+
+
+.navbar-nav .nav-link:hover{
+
+    background:#0d6efd;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+
+
+/* CUSTOMER BUTTON */
+
+
+.customer-btn:hover{
+
+    background:#0d6efd;
+
+}
+
+
+
+
+
+/* ADMIN BUTTON */
+
+
+.admin-btn{
+
+    border:1px solid rgba(255,255,255,.35);
+
+}
+
+
+
+.admin-btn:hover{
+
+    background:#dc3545!important;
+
+}
+
+
+
+
+
+/* GET STARTED */
+
+
+.quote-btn{
+
+    background:#0d6efd;
+
+    color:white!important;
+
+    padding:10px 25px!important;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    margin-left:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.quote-btn:hover{
+
+    background:#084298;
+
+    transform:translateY(-3px);
+
+    text-decoration:none;
+
+}
+
+
+
+
+
+/* MOBILE */
+
+
+.navbar-toggler{
+
+    border:none;
+
+}
+
+
+
+.navbar-toggler:focus{
+
+    outline:none;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.navbar{
+
+    padding:12px 20px;
+
+}
+
+
+.navbar-nav{
+
+    margin-top:15px;
+
+}
+
+
+.navbar-nav .nav-link{
+
+    text-align:center;
+
+    margin:7px 0;
+
+}
+
+
+
+.quote-btn{
+
+    display:block;
+
+    text-align:center;
+
+    margin:10px 0;
+
+}
+
+
+
+}
+
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+
+
+
+<a class="navbar-brand" href="/">
+
+<i class="fa fa-shield"></i>
+
+Insurance <span>Management</span>
+
+</a>
+
+
+
+
+
+<button class="navbar-toggler"
+type="button"
+data-toggle="collapse"
+data-target="#navbarCollapse">
+
+
+<span class="navbar-toggler-icon"></span>
+
+
+</button>
+
+
+
+
+
+
+<div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+
+
+
+
+
+<div class="navbar-nav">
+
+
+
+<a href="/customer/customerclick" class="nav-item nav-link customer-btn">
+
+<i class="fa fa-user"></i>
+
+Customer Portal
+
+</a>
+
+
+
+
+<a href="/adminlogin" class="nav-item nav-link admin-btn">
+
+<i class="fa fa-lock"></i>
+
+Admin
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+<div class="navbar-nav align-items-center">
+
+
+
+<a href="/aboutus" class="nav-item nav-link">
+
+<i class="fa fa-info-circle"></i>
+
+About Us
+
+</a>
+
+
+
+
+<a href="/contactus" class="nav-item nav-link">
+
+<i class="fa fa-phone"></i>
+
+Contact
+
+</a>
+
+
+
+
+<a href="/contactus" class="quote-btn">
+
+Get Started
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</nav>
+
+
+
+</body>
+
+
+</html>

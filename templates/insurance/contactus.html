@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Customer Feedback</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+<style>
+
+
+*{
+
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+
+}
+
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f5f8ff;
+
+}
+
+
+
+/* Main Section */
+
+
+.feedback-section{
+
+    min-height:80vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:40px 20px;
+
+}
+
+
+
+.feedback-card{
+
+    width:600px;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:40px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.1);
+
+}
+
+
+
+/* Header */
+
+
+.feedback-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.feedback-header i{
+
+    font-size:45px;
+
+    color:#2563EB;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.feedback-header h2{
+
+    color:#1e293b;
+
+    font-weight:700;
+
+}
+
+
+
+.feedback-header p{
+
+    color:#64748b;
+
+    font-size:14px;
+
+    margin-top:10px;
+
+}
+
+
+
+
+/* Django Form Styling */
+
+
+.form-container p{
+
+    margin-bottom:20px;
+
+}
+
+
+
+.form-container label{
+
+    display:block;
+
+    font-weight:600;
+
+    color:#334155;
+
+    margin-bottom:8px;
+
+}
+
+
+
+.form-container input,
+.form-container textarea,
+.form-container select{
+
+    width:100%;
+
+    padding:13px 15px;
+
+    border-radius:12px;
+
+    border:1px solid #dbe4f0;
+
+    outline:none;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:.3s;
+
+}
+
+
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus{
+
+    border-color:#2563EB;
+
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+
+
+
+/* Submit Button */
+
+
+.submit-btn{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(135deg,#2563EB,#1E40AF);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.submit-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,.35);
+
+}
+
+
+
+
+/* Trust Section */
+
+
+.trust-message{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+
+
+.trust-message i{
+
+    color:#10B981;
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.feedback-card{
+
+    padding:25px;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+
+<body>
+
+
+{% include "insurance/navbar.html" %}
+
+
+
+
+<section class="feedback-section">
+
+
+<div class="feedback-card">
+
+
+
+<div class="feedback-header">
+
+
+<i class="fas fa-comments"></i>
+
+
+<h2>
+Customer Feedback
+</h2>
+
+
+<p>
+Your opinion helps us improve our insurance services and customer experience.
+</p>
+
+
+</div>
+
+
+
+
+<form method="POST" autocomplete="off">
+
+
+{% csrf_token %}
+
+
+
+<div class="form-container">
+
+
+{{ form.as_p }}
+
+
+
+</div>
+
+
+
+
+<input 
+type="submit" 
+value="Send Message"
+class="submit-btn">
+
+
+
+</form>
+
+
+
+
+<div class="trust-message">
+
+
+<i class="fas fa-shield-alt"></i>
+
+Your feedback is handled securely by our customer service team.
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+{% include "insurance/footer.html" %}
+
+
+
+
+</body>
+
+
+</html>

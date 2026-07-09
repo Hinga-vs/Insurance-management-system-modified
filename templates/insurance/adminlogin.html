@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+{% load widget_tweaks %}
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Insurance Login</title>
+
+
+<!-- Google Font -->
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+<style>
+
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    background:
+    linear-gradient(
+        rgba(15,23,42,.75),
+        rgba(15,23,42,.75)
+    ),
+    url("https://images.unsplash.com/photo-1450101499163-c8848c66ca85")
+    center/cover fixed;
+
+}
+
+
+
+/* Login Container */
+
+.login-wrapper{
+
+    min-height:85vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+}
+
+
+
+.login-card{
+
+    width:420px;
+
+    background:white;
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.25);
+
+}
+
+
+
+/* Header */
+
+
+.login-header{
+
+    background:
+    linear-gradient(135deg,#1E3A8A,#2563EB);
+
+    color:white;
+
+    padding:35px 30px;
+
+    text-align:center;
+
+}
+
+
+
+.login-header i{
+
+    font-size:45px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.login-header h2{
+
+    font-size:25px;
+
+    font-weight:700;
+
+}
+
+
+
+.login-header p{
+
+    margin-top:8px;
+
+    opacity:.9;
+
+    font-size:14px;
+
+}
+
+
+
+/* Form */
+
+
+.login-form{
+
+    padding:35px;
+
+}
+
+
+
+.form-group{
+
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+
+
+.form-group i{
+
+    position:absolute;
+
+    top:15px;
+
+    left:15px;
+
+    color:#2563EB;
+
+}
+
+
+
+.form-control{
+
+    height:52px;
+
+    border-radius:12px;
+
+    border:1px solid #dbe2ea;
+
+    padding-left:45px;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+
+
+.form-control:focus{
+
+    border-color:#2563EB;
+
+    box-shadow:
+    0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+
+
+/* Button */
+
+
+.login-btn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:
+    linear-gradient(135deg,#2563EB,#1E40AF);
+
+    color:white;
+
+    font-weight:600;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.login-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,.35);
+
+}
+
+
+
+/* Trust message */
+
+
+.security-box{
+
+    text-align:center;
+
+    padding:0 30px 30px;
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+
+
+.security-box i{
+
+    color:#10B981;
+
+}
+
+
+
+/* Mobile */
+
+
+@media(max-width:500px){
+
+.login-card{
+
+    width:100%;
+
+}
+
+.login-form{
+
+    padding:25px;
+
+}
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+{% include "insurance/navbar.html" %}
+
+
+
+
+<div class="login-wrapper">
+
+
+<div class="login-card">
+
+
+<div class="login-header">
+
+
+<i class="fas fa-shield-halved"></i>
+
+
+<h2>
+Insurance Portal
+</h2>
+
+
+<p>
+Secure access to your insurance account
+</p>
+
+
+</div>
+
+
+
+
+<form method="post" class="login-form">
+
+
+{% csrf_token %}
+
+
+
+<div class="form-group">
+
+
+<i class="fas fa-user"></i>
+
+
+{% render_field form.username class="form-control" placeholder="Username" %}
+
+
+</div>
+
+
+
+<div class="form-group">
+
+
+<i class="fas fa-lock"></i>
+
+
+{% render_field form.password class="form-control" placeholder="Password" %}
+
+
+</div>
+
+
+
+<button type="submit" class="login-btn">
+
+
+<i class="fas fa-sign-in-alt"></i>
+
+Login
+
+
+</button>
+
+
+
+</form>
+
+
+
+<div class="security-box">
+
+
+<i class="fas fa-lock"></i>
+
+ Your information is protected with secure authentication.
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+{% include "insurance/footer.html" %}
+
+
+
+</body>
+
+
+</html>

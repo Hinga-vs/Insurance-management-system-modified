@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | Insurance Management</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f5f7fb;
+
+}
+
+/* HERO */
+
+.hero{
+
+    min-height:60vh;
+
+    background:
+    linear-gradient(rgba(8,25,47,.80),rgba(8,25,47,.80)),
+    url('{% static "image/homepage.jpg" %}');
+
+    background-size:cover;
+
+    background-position:center;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:40px;
+
+}
+
+.hero h1{
+
+    color:white;
+
+    font-size:52px;
+
+    font-weight:700;
+
+}
+
+.hero p{
+
+    color:#d6e6ff;
+
+    font-size:20px;
+
+    margin-top:15px;
+
+}
+
+/* MAIN */
+
+.about-section{
+
+    margin-top:-70px;
+
+    padding:0 20px 70px;
+
+}
+
+.about-card{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:60px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.10);
+
+}
+
+.about-card h2{
+
+    color:#0F4C81;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    font-weight:700;
+
+}
+
+.about-card p{
+
+    color:#555;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    text-align:center;
+
+}
+
+/* FEATURES */
+
+.features{
+
+    margin-top:50px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+.feature{
+
+    text-align:center;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    background:#f8fbff;
+
+    transition:.35s;
+
+}
+
+.feature:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.10);
+
+}
+
+.feature i{
+
+    font-size:45px;
+
+    color:#0F4C81;
+
+    margin-bottom:20px;
+
+}
+
+.feature h4{
+
+    margin-bottom:15px;
+
+    color:#0F4C81;
+
+}
+
+.feature p{
+
+    font-size:15px;
+
+}
+
+/* QUOTE */
+
+.quote{
+
+    margin-top:50px;
+
+    background:linear-gradient(135deg,#0F4C81,#1D6FD6);
+
+    color:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+}
+
+.quote p{
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    color:white;
+
+}
+
+.quote span{
+
+    display:block;
+
+    margin-top:20px;
+
+    font-weight:600;
+
+}
+
+/* BUTTON */
+
+.home-btn{
+
+    margin-top:40px;
+
+    text-align:center;
+
+}
+
+.home-btn a{
+
+    display:inline-block;
+
+    background:#0F4C81;
+
+    color:white;
+
+    padding:15px 40px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+    box-shadow:0 12px 25px rgba(15,76,129,.25);
+
+}
+
+.home-btn a:hover{
+
+    background:#1D6FD6;
+
+    transform:translateY(-4px);
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.about-card{
+
+padding:35px 25px;
+
+}
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+{% include "insurance/navbar.html" %}
+
+<section class="hero">
+
+<div>
+
+<h1>About Our Company</h1>
+
+<p>
+Protecting Your Future with Trusted Insurance Solutions
+</p>
+
+</div>
+
+</section>
+
+<section class="about-section">
+
+<div class="about-card">
+
+<h2>Who We Are</h2>
+
+<p>
+
+Our Insurance Management System is designed to simplify the way customers
+manage insurance policies, submit claims, and monitor their coverage.
+We are committed to providing secure, reliable, and innovative digital
+insurance services that deliver peace of mind to individuals and businesses.
+
+</p>
+
+<div class="features">
+
+<div class="feature">
+
+<i class="fas fa-shield-halved"></i>
+
+<h4>Reliable Protection</h4>
+
+<p>
+Comprehensive insurance solutions designed to protect what matters most.
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fas fa-user-shield"></i>
+
+<h4>Secure Platform</h4>
+
+<p>
+Your personal information and insurance records are encrypted and protected.
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fas fa-headset"></i>
+
+<h4>24/7 Support</h4>
+
+<p>
+Our support team is ready to assist you whenever you need help.
+</p>
+
+</div>
+
+</div>
+
+<div class="quote">
+
+<p>
+
+"Insurance is not just about protecting today—it is about securing tomorrow.
+Our mission is to provide confidence, security, and peace of mind for every customer."
+
+</p>
+
+<span>Insurance Management Team</span>
+
+</div>
+
+<div class="home-btn">
+
+<a href="/">
+
+<i class="fas fa-house"></i>
+
+Back to Home
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+{% include "insurance/footer.html" %}
+
+</body>
+
+</html>

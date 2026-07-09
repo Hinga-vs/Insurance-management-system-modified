@@ -1,0 +1,231 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+
+        body{
+            background:#f4f7fc;
+        }
+
+        a{
+            text-decoration:none !important;
+        }
+
+        .dashboard-title{
+            font-size:32px;
+            font-weight:700;
+            color:#2d3748;
+            margin:35px 0 25px;
+        }
+
+        .record-card{
+            background:#fff;
+            border:none;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 12px 35px rgba(0,0,0,.08);
+        }
+
+        .record-header{
+            background:linear-gradient(135deg,#4C51BF,#667EEA);
+            color:#fff;
+            padding:22px 28px;
+        }
+
+        .record-header h4{
+            margin:0;
+            font-weight:600;
+        }
+
+        .table{
+            margin-bottom:0;
+        }
+
+        .table thead{
+            background:#eef2ff;
+        }
+
+        .table thead th{
+            border:none;
+            text-align:center;
+            color:#374151;
+            font-weight:700;
+            padding:18px;
+            white-space:nowrap;
+        }
+
+        .table tbody td{
+            text-align:center;
+            vertical-align:middle;
+            padding:18px;
+            border-top:1px solid #ececec;
+        }
+
+        .table tbody tr{
+            transition:.3s;
+        }
+
+        .table tbody tr:hover{
+            background:#f8f9ff;
+            transform:scale(1.002);
+        }
+
+        .serial-badge{
+            display:inline-block;
+            min-width:38px;
+            padding:6px 12px;
+            background:#667EEA;
+            color:#fff;
+            border-radius:50px;
+            font-weight:600;
+        }
+
+        .policy-pill{
+            display:inline-block;
+            background:#e8f0ff;
+            color:#4C51BF;
+            padding:6px 14px;
+            border-radius:30px;
+            font-weight:600;
+        }
+
+        .status{
+            display:inline-block;
+            padding:6px 16px;
+            border-radius:30px;
+            font-weight:600;
+            color:#fff;
+        }
+
+        .Approved{
+            background:#28a745;
+        }
+
+        .Pending{
+            background:#ffc107;
+            color:#212529;
+        }
+
+        .Rejected,
+        .Disapproved{
+            background:#dc3545;
+        }
+
+        .table-responsive{
+            border-radius:0 0 20px 20px;
+        }
+
+        @media(max-width:768px){
+
+            .dashboard-title{
+                font-size:26px;
+            }
+
+            .table{
+                font-size:14px;
+            }
+
+            .table thead th,
+            .table tbody td{
+                padding:12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="dashboard-title">
+        <i class="fas fa-users mr-2"></i>
+        Policy Holder Records
+    </h2>
+
+    <div class="record-card">
+
+        <div class="record-header">
+
+            <h4>
+                <i class="fas fa-clipboard-list mr-2"></i>
+                Policy Holder Record
+            </h4>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Policy Name</th>
+                        <th>Customer Name</th>
+                        <th>Applied Date</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for t in policyrecords %}
+
+                    <tr>
+
+                        <td>
+                            <span class="serial-badge">
+                                {{ forloop.counter }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <span class="policy-pill">
+                                {{ t.Policy }}
+                            </span>
+                        </td>
+
+                        <td>
+                            <strong>{{ t.customer }}</strong>
+                        </td>
+
+                        <td>{{ t.creation_date }}</td>
+
+                        <td>
+                            <span class="status {{ t.status }}">
+                                {{ t.status }}
+                            </span>
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+
+{% endblock content %}

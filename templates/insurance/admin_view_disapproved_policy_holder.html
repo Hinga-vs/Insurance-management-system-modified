@@ -1,0 +1,360 @@
+{% extends 'insurance/adminbase.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+
+body{
+    background:#f4f7fb;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.hero-section{
+    background:linear-gradient(135deg,#4C51BF,#667EEA);
+    color:#fff;
+    border-radius:20px;
+    padding:45px;
+    margin:40px 0 30px;
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+}
+
+.hero-section h2{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.hero-section p{
+    margin:0;
+    font-size:16px;
+    opacity:.95;
+}
+
+.record-card{
+    background:#fff;
+    border:none;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+}
+
+.record-header{
+    padding:22px 30px;
+    border-bottom:1px solid #ececec;
+}
+
+.record-header h4{
+    margin:0;
+    color:#2d3748;
+    font-weight:700;
+}
+
+.table{
+    margin-bottom:0;
+}
+
+.table thead{
+    background:#eef2ff;
+}
+
+.table thead th{
+    border:none;
+    text-align:center;
+    padding:18px;
+    color:#374151;
+    font-weight:700;
+}
+
+.table tbody td{
+    text-align:center;
+    vertical-align:middle;
+    padding:18px;
+    border-top:1px solid #f1f1f1;
+}
+
+.table tbody tr{
+    transition:.3s;
+}
+
+.table tbody tr:hover{
+    background:#f8f9ff;
+}
+
+.serial-badge{
+    display:inline-block;
+    min-width:38px;
+    padding:6px 12px;
+    border-radius:50px;
+    background:#667EEA;
+    color:#fff;
+    font-weight:600;
+}
+
+.policy-pill{
+    display:inline-block;
+    background:#eef2ff;
+    color:#4C51BF;
+    padding:7px 16px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.customer-name{
+    font-weight:600;
+    color:#2d3748;
+}
+
+.date{
+    color:#6c757d;
+}
+
+.status-badge{
+    padding:7px 18px;
+    border-radius:30px;
+    font-weight:600;
+    color:#fff;
+}
+
+.status-approved{
+    background:#28a745;
+}
+
+.status-pending{
+    background:#ffc107;
+    color:#212529;
+}
+
+.status-disapproved,
+.status-rejected{
+    background:#dc3545;
+}
+
+.status-default{
+    background:#6c757d;
+}
+
+.footer-box{
+    margin-top:25px;
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    text-align:center;
+    color:#6c757d;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+@media(max-width:768px){
+
+.hero-section{
+    padding:30px 20px;
+    text-align:center;
+}
+
+.hero-section h2{
+    font-size:28px;
+}
+
+.table{
+    font-size:14px;
+}
+
+.table thead th,
+.table tbody td{
+    padding:12px;
+}
+
+}
+
+</style>
+
+</head>
+
+<div class="container mb-5">
+
+    <!-- Hero Banner -->
+
+    <div class="hero-section">
+
+        <h2>
+
+            <i class="fas fa-file-signature mr-2"></i>
+
+            Policy Holder Records
+
+        </h2>
+
+        <p>
+
+            Monitor every insurance application from submission to approval.
+            Keeping accurate records helps provide faster service, greater transparency,
+            and a better experience for every customer.
+
+        </p>
+
+    </div>
+
+    <!-- Records Card -->
+
+    <div class="record-card">
+
+        <div class="record-header">
+
+            <h4>
+
+                <i class="fas fa-clipboard-list mr-2"></i>
+
+                Insurance Applications
+
+            </h4>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Serial No.</th>
+                        <th>Policy</th>
+                        <th>Customer</th>
+                        <th>Applied Date</th>
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for t in policyrecords %}
+
+                    <tr>
+
+                        <td>
+
+                            <span class="serial-badge">
+
+                                {{ forloop.counter }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="policy-pill">
+
+                                {{ t.Policy }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="customer-name">
+
+                                {{ t.customer }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span class="date">
+
+                                <i class="far fa-calendar-alt mr-1"></i>
+
+                                {{ t.creation_date }}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            {% if t.status == "Approved" %}
+
+                                <span class="status-badge status-approved">
+
+                                    <i class="fas fa-check-circle mr-1"></i>
+
+                                    {{ t.status }}
+
+                                </span>
+
+                            {% elif t.status == "Pending" %}
+
+                                <span class="status-badge status-pending">
+
+                                    <i class="fas fa-clock mr-1"></i>
+
+                                    {{ t.status }}
+
+                                </span>
+
+                            {% elif t.status == "Disapproved" or t.status == "Rejected" %}
+
+                                <span class="status-badge status-disapproved">
+
+                                    <i class="fas fa-times-circle mr-1"></i>
+
+                                    {{ t.status }}
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="status-badge status-default">
+
+                                    {{ t.status }}
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- Footer Message -->
+
+    <div class="footer-box">
+
+        <i class="fas fa-shield-alt text-primary mr-2"></i>
+
+        Every policy application is tracked securely to ensure transparency,
+        faster approvals, and a seamless insurance experience for our customers.
+
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+
+{% endblock content %}

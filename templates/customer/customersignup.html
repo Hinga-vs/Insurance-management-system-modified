@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customer Registration | Insurance Management</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#0F4C81;
+    --secondary:#1D6FD6;
+    --accent:#4F9CF9;
+    --success:#00B894;
+    --light:#F5F8FC;
+    --white:#ffffff;
+    --text:#2D3748;
+    --border:#DCE6F2;
+
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(rgba(245,248,252,.93),rgba(245,248,252,.93)),
+    radial-gradient(circle at top right,#d6e8ff 0%,transparent 40%),
+    radial-gradient(circle at bottom left,#dcefff 0%,transparent 35%);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+}
+
+/*==========================
+SECTION
+===========================*/
+
+.signup-section{
+
+    padding:120px 20px 80px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/*==========================
+CARD
+===========================*/
+
+.signup-card{
+
+    width:100%;
+
+    max-width:950px;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:24px;
+
+    padding:50px;
+
+    border:1px solid rgba(255,255,255,.6);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.08),
+    0 5px 15px rgba(0,0,0,.05);
+
+    animation:fadeUp .8s ease;
+
+}
+
+.signup-title{
+
+    font-size:2.4rem;
+
+    color:var(--primary);
+
+    text-align:center;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.signup-subtitle{
+
+    text-align:center;
+
+    color:#6B7280;
+
+    margin-bottom:40px;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+}
+
+/*==========================
+FORM
+===========================*/
+
+.form-group{
+
+    margin-bottom:22px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+.form-control{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:#FAFCFF;
+
+    padding:0 18px;
+
+    font-size:15px;
+
+    transition:.35s;
+
+}
+
+.form-control:hover{
+
+    border-color:#BFD8FF;
+
+}
+
+.form-control:focus{
+
+    border-color:var(--secondary);
+
+    background:#fff;
+
+    outline:none;
+
+    box-shadow:0 0 0 .25rem rgba(29,111,214,.12);
+
+}
+
+input[type=file].form-control{
+
+    height:auto;
+
+    padding:14px;
+
+}
+
+/*==========================
+BUTTON
+===========================*/
+
+.btn-register{
+
+    width:100%;
+
+    margin-top:18px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:50px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(90deg,#0F4C81,#1D6FD6);
+
+    transition:.35s;
+
+    box-shadow:0 12px 28px rgba(29,111,214,.25);
+
+}
+
+.btn-register:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(29,111,214,.35);
+
+    background:linear-gradient(90deg,#0D3C67,#165BB5);
+
+}
+
+/*==========================
+FILE INPUT
+===========================*/
+
+input[type=file]{
+
+    cursor:pointer;
+
+}
+
+/*==========================
+ANIMATION
+===========================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================
+RESPONSIVE
+===========================*/
+
+@media(max-width:992px){
+
+.signup-card{
+
+padding:40px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.signup-section{
+
+padding:100px 15px 60px;
+
+}
+
+.signup-card{
+
+padding:30px 22px;
+
+border-radius:18px;
+
+}
+
+.signup-title{
+
+font-size:2rem;
+
+}
+
+.signup-subtitle{
+
+font-size:15px;
+
+}
+
+.form-control{
+
+height:52px;
+
+}
+
+.btn-register{
+
+font-size:16px;
+
+padding:14px;
+
+}
+
+}
+
+    </style>
+
+</head>
+
+<body>
+
+{% include "insurance/navbar.html" %}
+
+<section class="signup-section">
+
+    <div class="signup-card">
+
+        <div style="text-align:center;margin-bottom:30px;">
+
+            <div style="
+                width:90px;
+                height:90px;
+                margin:auto;
+                border-radius:50%;
+                background:linear-gradient(135deg,#0F4C81,#1D6FD6);
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:white;
+                font-size:36px;
+                box-shadow:0 15px 35px rgba(29,111,214,.25);">
+
+                <i class="fas fa-user-shield"></i>
+
+            </div>
+
+            <h2 class="signup-title">
+                Create Your Customer Account
+            </h2>
+
+            <p class="signup-subtitle">
+                Join our secure insurance platform to manage policies, submit claims,
+                track applications, and access your insurance services anytime,
+                anywhere.
+            </p>
+
+        </div>
+
+        <form method="POST" autocomplete="off" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label>
+                        <i class="fas fa-user"></i>
+                        Username
+                    </label>
+
+                    {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="Choose a username" %}
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+
+                    {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="Create a secure password" %}
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+
+                    <label>
+                        <i class="fas fa-user-circle"></i>
+                        First Name
+                    </label>
+
+                    {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="John" %}
+
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <label>
+                        <i class="fas fa-user-circle"></i>
+                        Last Name
+                    </label>
+
+                    {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Doe" %}
+
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+
+                    <label>
+                        <i class="fas fa-phone"></i>
+                        Mobile Number
+                    </label>
+
+                    {% render_field customerForm.mobile|attr:'required:true' class="form-control" placeholder="+254 712 345 678" %}
+
+                </div>
+
+                <div class="form-group col-md-6">
+
+                    <label>
+                        <i class="fas fa-map-marker-alt"></i>
+                        Address
+                    </label>
+
+                    {% render_field customerForm.address|attr:'required:true' class="form-control" placeholder="Enter your address" %}
+
+                </div>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    <i class="fas fa-camera"></i>
+                    Profile Picture
+                </label>
+
+                {% render_field customerForm.profile_pic|attr:'required:true' class="form-control" %}
+
+            </div>
+
+            <button type="submit" class="btn-register">
+
+                <i class="fas fa-user-plus"></i>
+
+                Create Account
+
+            </button>
+
+        </form>
+
+        <div style="margin-top:35px;text-align:center;">
+
+            <div style="
+                display:flex;
+                justify-content:center;
+                gap:15px;
+                flex-wrap:wrap;
+                margin-bottom:25px;">
+
+                <span style="
+                    background:#EEF6FF;
+                    color:#0F4C81;
+                    padding:10px 18px;
+                    border-radius:50px;
+                    font-size:14px;
+                    font-weight:600;">
+
+                    🔒 Secure Registration
+
+                </span>
+
+                <span style="
+                    background:#EEF6FF;
+                    color:#0F4C81;
+                    padding:10px 18px;
+                    border-radius:50px;
+                    font-size:14px;
+                    font-weight:600;">
+
+                    ⚡ Fast Approval
+
+                </span>
+
+                <span style="
+                    background:#EEF6FF;
+                    color:#0F4C81;
+                    padding:10px 18px;
+                    border-radius:50px;
+                    font-size:14px;
+                    font-weight:600;">
+
+                    🛡 Trusted Protection
+
+                </span>
+
+            </div>
+
+            <p style="color:#6B7280;font-size:15px;">
+
+                Your personal information is encrypted and securely protected.
+
+            </p>
+
+            <hr style="margin:25px auto;width:120px;">
+
+            <p style="font-size:15px;color:#555;">
+
+                Already have an account?
+
+                <a href="customerlogin"
+                   style="color:#1D6FD6;font-weight:600;text-decoration:none;">
+
+                    Sign In
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% include "insurance/footer.html" %}
+
+</body>
+
+</html>

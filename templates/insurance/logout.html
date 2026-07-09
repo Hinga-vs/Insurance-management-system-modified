@@ -1,0 +1,344 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<title>Logged Out | Insurance Management</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f5f8ff;
+
+}
+
+
+
+
+
+.logout-section{
+
+    min-height:75vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px 20px;
+
+}
+
+
+
+
+.logout-card{
+
+
+    background:white;
+
+    max-width:700px;
+
+    width:100%;
+
+    text-align:center;
+
+    padding:50px;
+
+    border-radius:25px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+    animation:fade .8s ease;
+
+
+}
+
+
+
+
+
+.logout-image{
+
+    width:100%;
+
+    max-width:350px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+.logout-card h1{
+
+
+    color:#0f172a;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+
+.logout-card p{
+
+
+    color:#64748b;
+
+    line-height:1.8;
+
+    margin-bottom:30px;
+
+
+}
+
+
+
+
+.security{
+
+
+    background:#eff6ff;
+
+    color:#1e40af;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+
+
+.security i{
+
+    margin-right:8px;
+
+}
+
+
+
+
+.home-btn{
+
+
+    display:inline-block;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:13px 35px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+
+}
+
+
+
+.home-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-3px);
+
+    color:white;
+
+    text-decoration:none;
+
+}
+
+
+
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
+
+@media(max-width:600px){
+
+
+.logout-card{
+
+padding:30px 20px;
+
+}
+
+
+.logout-card h1{
+
+font-size:25px;
+
+}
+
+
+}
+
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+{% include "insurance/navbar.html" %}
+
+
+
+
+
+<section class="logout-section">
+
+
+<div class="logout-card">
+
+
+
+
+
+<img src="{% static "image/logout_img.png" %}"
+class="logout-image"
+alt="Logout">
+
+
+
+
+
+<h1>
+
+Successfully Logged Out
+
+</h1>
+
+
+
+
+<p>
+
+Thank you for choosing our insurance platform.
+Your protection and trust remain our priority.
+We hope to assist you again whenever you need reliable coverage.
+
+</p>
+
+
+
+
+
+<div class="security">
+
+<i class="fas fa-shield-alt"></i>
+
+Your account information is safe and protected.
+
+</div>
+
+
+
+
+
+<a href="/" class="home-btn">
+
+<i class="fas fa-home"></i>
+
+Return Home
+
+</a>
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+{% include "insurance/footer.html" %}
+
+
+
+
+
+</body>
+
+
+</html>

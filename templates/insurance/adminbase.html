@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',Tahoma,sans-serif;
+    background:#f4f7fb;
+
+}
+
+
+/* Remove link decoration */
+
+a:link,
+a:visited{
+
+    text-decoration:none;
+
+}
+
+
+/* ================= HEADER ================= */
+
+
+header{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:70px;
+    background:#ffffff;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+}
+
+
+
+.left_area h3{
+
+    margin:0;
+    color:#1e3a8a;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+
+}
+
+
+.left_area span{
+
+    color:#2563eb;
+
+}
+
+
+
+/* Logout Button */
+
+
+.logout_btn{
+
+    background:#2563eb;
+    color:white!important;
+    padding:10px 25px;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(37,99,235,.3);
+
+}
+
+
+.logout_btn:hover{
+
+    background:#1e40af;
+    transform:translateY(-2px);
+
+}
+
+
+
+/* ================= SIDEBAR ================= */
+
+
+.sidebar{
+
+    background:#111827;
+    position:fixed;
+    top:70px;
+    left:0;
+    width:250px;
+    height:calc(100vh - 70px);
+    padding-top:30px;
+    transition:.4s;
+    overflow:hidden;
+    box-shadow:5px 0 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.sidebar .profile_image{
+
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    border:4px solid #2563eb;
+    object-fit:cover;
+    margin-bottom:12px;
+
+}
+
+
+
+.sidebar h4{
+
+    color:#ffffff;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:25px;
+
+}
+
+
+
+/* Sidebar links */
+
+
+.sidebar a{
+
+    color:#cbd5e1;
+    display:flex;
+    align-items:center;
+    width:100%;
+    height:58px;
+    padding-left:35px;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+    border-left:4px solid transparent;
+
+}
+
+
+
+.sidebar a:hover{
+
+    background:#1e293b;
+    color:#ffffff;
+    border-left:4px solid #2563eb;
+
+}
+
+
+
+.sidebar i{
+
+    width:30px;
+    font-size:18px;
+    color:#60a5fa;
+
+}
+
+
+
+/* ================= MENU BUTTON ================= */
+
+
+label #sidebar_btn{
+
+    z-index:1100;
+    color:#1e3a8a;
+    position:fixed;
+    cursor:pointer;
+    left:270px;
+    top:25px;
+    font-size:22px;
+    transition:.3s;
+
+}
+
+
+
+label #sidebar_btn:hover{
+
+    color:#2563eb;
+
+}
+
+
+
+/* ================= COLLAPSED SIDEBAR ================= */
+
+
+#check:checked~.sidebar{
+
+    left:-190px;
+
+}
+
+
+
+#check:checked~.sidebar a span{
+
+    display:none;
+
+}
+
+
+
+#check:checked~.sidebar a{
+
+    margin-left:170px;
+    width:80px;
+    font-size:20px;
+
+}
+
+
+
+/* ================= MAIN CONTENT ================= */
+
+
+.content{
+
+    margin-left:250px;
+    padding-top:70px;
+    min-height:100vh;
+    background:#f4f7fb;
+    transition:.4s;
+
+}
+
+
+
+#check:checked~.content{
+
+    margin-left:60px;
+
+}
+
+
+
+#check{
+
+    display:none;
+
+}
+
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+
+@media(max-width:768px){
+
+
+.sidebar{
+
+    left:-250px;
+
+}
+
+
+.content{
+
+    margin-left:0;
+
+}
+
+
+label #sidebar_btn{
+
+    left:20px;
+    color:white;
+
+}
+
+
+header{
+
+    padding-left:60px;
+
+}
+
+
+#check:checked~.sidebar{
+
+    left:0;
+
+}
+
+
+#check:checked~.content{
+
+    margin-left:0;
+
+}
+
+
+.left_area h3{
+
+    font-size:17px;
+
+}
+
+
+.logout_btn{
+
+    padding:8px 15px;
+
+}
+
+
+}
+
+
+
+</style>
+
+
+<!-- Font Awesome Icons -->
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+
+</head>
+
+<body>
+
+<input type="checkbox" id="check">
+
+
+<!-- HEADER START -->
+
+<header>
+
+    <label for="check">
+        <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+
+
+    <div class="left_area">
+
+        <h3>
+            Insurance Management
+        </h3>
+
+    </div>
+
+
+    <div class="right_area">
+
+        <a href="/logout" class="logout_btn">
+
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+
+        </a>
+
+    </div>
+
+
+</header>
+
+<!-- HEADER END -->
+
+
+
+
+
+<!-- SIDEBAR START -->
+
+<div class="sidebar">
+
+
+<center>
+
+
+    <img src="{% static "image/admin.png" %}" 
+         class="profile_image" 
+         alt="Admin">
+
+
+    <h4>
+        Admin Portal
+    </h4>
+
+
+</center>
+
+
+
+
+<a href="/admin-dashboard">
+
+    <i class="fas fa-tachometer-alt"></i>
+
+    <span>
+        Dashboard
+    </span>
+
+</a>
+
+
+
+<a href="/admin-view-customer">
+
+    <i class="fas fa-users"></i>
+
+    <span>
+        Customers
+    </span>
+
+</a>
+
+
+
+<a href="/admin-category">
+
+    <i class="fas fa-layer-group"></i>
+
+    <span>
+        Categories
+    </span>
+
+</a>
+
+
+
+
+<a href="/admin-policy">
+
+    <i class="fas fa-file-contract"></i>
+
+    <span>
+        Policies
+    </span>
+
+</a>
+
+
+
+
+<a href="/admin-question">
+
+    <i class="fas fa-headset"></i>
+
+    <span>
+        Customer Support
+    </span>
+
+</a>
+
+
+
+</div>
+
+<!-- SIDEBAR END -->
+
+
+
+
+
+
+<!-- CONTENT START -->
+
+
+<div class="content">
+
+
+    <div class="page-container">
+
+
+        {% block content %}
+
+
+        {% endblock content %}
+
+
+
+    </div>
+
+
+
+</div>
+
+
+<!-- CONTENT END -->
+
+
+
+
+
+</body>
+
+</html>
