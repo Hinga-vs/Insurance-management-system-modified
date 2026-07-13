@@ -27,12 +27,7 @@ SECRET_KEY = 'ls@!_(edqp*xy76kvbsst$07at(v^li*2&ew!^$8o(@wa6@a+$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "insurance-management-system-modified.onrender.com",
-    "insucover.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
